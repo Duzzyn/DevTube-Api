@@ -10,13 +10,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       titulo: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       descricao: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       url: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING,
+        validate: {
+          isUrl: true,
+        }
+        
       },
       createdAt: {
         allowNull: false,
