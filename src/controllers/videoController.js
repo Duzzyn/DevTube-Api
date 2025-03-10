@@ -24,7 +24,7 @@ class VideoController {
         const dados = req.body;
         try {
             const criaVideoRegistro = await video.Video.create(dados)
-            return res.status(200).json(criaVideoRegistro)
+            return res.status(201).json(criaVideoRegistro)
         } catch (erro) {
             return res.status(500).json({ erro: erro.message })
         }
