@@ -10,12 +10,30 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Categoria.hasMany(models.Video, {
+        foreignKey: 'categoriaId'
+      })
     }
   }
   Categoria.init({
-    titulo: DataTypes.STRING,
-    cor: DataTypes.STRING
+    titulo: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'O campo "titulo" é obrigatório.',
+        },
+      }
+    },
+    cor: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'O campo "Cor" é obrigatório.'
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'Categoria',
